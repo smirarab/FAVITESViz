@@ -207,12 +207,26 @@ function contacttransmitGraph() {
           }
         }
         // Cytoscape Layout function //
-        layoutType = 'cose-bilkent';
+        layoutType = 'cose';
         cy.layout({
-          name: 'cose-bilkent',
+          name: 'cose',
           fit: true,
-          nodeRepulsion: 1000000000,
-          avoidOverlap: true
+          avoidOverlap: true,
+	  randomize: true,
+          nodeRepulsion: 6000000,
+	  //idealEdgeLength: 50,
+  	  //edgeElasticity: 0.45,
+	  //nestingFactor: 0.5,
+	  //gravity: 110.45,
+	  //numIter: 2500,
+	  //tile: false,
+ 	  //tilingPaddingVertical: 1120,
+	  //tilingPaddingHorizontal: 1120,
+ 	  //gravityRangeCompound: 115.5,
+ 	  //gravityCompound: 119.0,
+ 	  //gravityRange: 113.8,
+  	  //initialEnergyOnIncremental: 110.5.,
+	  animate: 'end'
         }).run();
         if (i >= contactLines.length) {
           $('#loaderCircle').hide(0);
@@ -705,7 +719,7 @@ function toggleAnimation() {
 function toggleLayouts() {
   var closebutton = $('#closebutton');
   var checkbutton = $('#checkbutton');
-  var cosebilkBtn = $('#cosebilkent');
+  var cosebilkBtn = $('#cose');
   var breadthBtn = $('#breadthfirst');
   var circleBtn = $('#circle');
   if (transmitDone == true) {
@@ -718,7 +732,7 @@ function toggleLayouts() {
       $('#layoutModal').fadeOut(300);
     });
     cosebilkBtn.click(function() {
-      layoutType = 'cose-bilkent'
+      layoutType = 'cose'
       cy.layout({
         name: layoutType,
         fit: true,
